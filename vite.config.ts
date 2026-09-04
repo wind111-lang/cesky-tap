@@ -26,12 +26,19 @@ export default defineConfig(async () => {
   const { cloudflare } = await import('@cloudflare/vite-plugin')
 
   return {
+    base: process.env.VITE_BASE_PATH ?? '/',
     server: isCodexSeatbeltSandbox
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
     plugins: [
       cloudflare({ viteEnvironment: { name: 'ssr' }, config: localBindingConfig }),
-      tanstackStart(),
+      tanstackStart({
+        prerender: {
+          enabled: true,
+          crawlLinks: true,
+          failOnError: true,
+        },
+      }),
       sites(),
       viteReact(),
     ],

@@ -257,7 +257,7 @@ function CzechLearningApp() {
         </div>
       </section>
 
-      <section className={`${styles.contentSection} ${styles.phrasesSection}`} id="phrases">
+      <section className={styles.contentSection} id="phrases">
         <div className={styles.sectionTitleRow}>
           <div><p className={styles.sectionKicker}>TAP & LISTEN</p><h2>旅で使える3フレーズ</h2></div>
           <p>カードをタップすると、日本語と読み方を確認できます。</p>
